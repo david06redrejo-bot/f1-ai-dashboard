@@ -4,6 +4,10 @@ Welcome to the **F1 Race Engineer AI** project!
 
 This repository documents a complete journey from basic NLP concepts to a Production-Grade Deep Learning application, wrapped in verify "Cyber-Industrial" F1 Dashboard.
 
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://f1-ai-dashboard.streamlit.app/)
+
+**🔴 Live Demo:** [f1-ai-dashboard.streamlit.app](https://f1-ai-dashboard.streamlit.app/)
+
 ---
 
 ## 🚀 production Features (v2.0)
