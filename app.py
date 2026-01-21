@@ -117,12 +117,7 @@ st.markdown("""
 def load_nlp_core():
     """Lazily load spaCy to save RAM on startup."""
     import spacy
-    try:
-        return spacy.load("en_core_web_md")
-    except OSError:
-        from spacy.cli import download
-        download("en_core_web_md")
-        return spacy.load("en_core_web_md")
+    return spacy.load("en_core_web_md")
 
 @st.cache_resource
 def get_tf_modules():
