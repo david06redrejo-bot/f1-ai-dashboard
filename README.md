@@ -1,4 +1,4 @@
-# 🏎️ F1 Race Engineer AI (Production)
+# 🏎️ F1 Race Engineer AI (Production v2.2)
 
 Welcome to the **F1 Race Engineer AI** project! 
 
@@ -10,12 +10,12 @@ This repository documents a complete journey from basic NLP concepts to a Produc
 
 ---
 
-## 🚀 Upgrade to v2.1 (Technical Audit)
-Following a comprehensive technical audit, the system has been upgraded to **Production Grade**:
-- **Fixed Model Convergence**: Now trains on **600+ synthetic data points** (up from 10) to ensure high accuracy.
-- **Robustness**: Auto-detects and installs NLP models (`en_core_web_md`) on cloud environments.
-- **Efficiency**: Implemented smart caching (`@st.cache_resource`) for the Neural Network training pipeline.
-- **UI/UX**: Deep "Cyber-Industrial" aesthetic with real-time threat visualization.
+## 🚀 Upgrade to v2.2 (System Audit)
+Following a comprehensive deep-dive, the system has been upgraded:
+- **Bias Correction**: Mitigated "Mode Collapse" by balancing the training set with short routine phrases ("Ok copy") and implementing `mask_zero` masking layers.
+- **Enhanced NER**: Entity Recognition is now **case-insensitive** and detects Drivers (Hamilton, Verstappen, etc.).
+- **Production UI**: Dark Mode "Mission Control" interface with Orbitron typography and glassmorphism.
+- **Robustness**: Auto-detects and installs NLP models (`en_core_web_md`) and handles missing dependencies gracefully.
 
 ---
 
@@ -27,6 +27,10 @@ Following a comprehensive technical audit, the system has been upgraded to **Pro
     - `day2_ner_lm.py.py`: Entity Recognition.
     - `day3_embeddings.py`: Semantic Vectors.
     - `day4_deep_learning.py`: Basic Keras implementation.
+- **`project_visualization/`**: Standalone scripts that generate clear HTML explanations of the algorithms.
+    - `day2_visualize.py`: NER & Bigram Visualizer.
+    - `day3_visualize.py`: Word Embedding Heatmaps.
+    - `day4_visualize.py`: Deep Learning Architecture Diagram.
 
 ---
 

@@ -117,7 +117,12 @@ st.markdown("""
 def load_nlp_core():
     """Lazily load spaCy to save RAM on startup."""
     import spacy
-    return spacy.load("en_core_web_md")
+    try:
+        return spacy.load("en_core_web_md")
+    except OSError:
+        from spacy.cli import download
+        download("en_core_web_md")
+        return spacy.load("en_core_web_md")
 
 @st.cache_resource
 def get_tf_modules():
@@ -128,10 +133,10 @@ def get_tf_modules():
     import numpy as np
     return tf, Tokenizer, pad_sequences, np
 
-def generate_f1_data(num_samples=600):
+def generate_f1_data(num_samples=2400):
     urgent_subjects = ["Engine", "Brakes", "Tires", "Gearbox", "Clutch", "Hydraulics", "Battery", "Turbo", "Rear Wing", "Suspension", "MGU-K"]
     urgent_verbs = ["failing", "on fire", "vibrating", "exploding", "smoking", "overheating", "broken", "leaking", "stuck", "losing power", "gone"]
-    urgent_contexts = ["badly", "critical", "box now", "immediately", "terminal", "failure", "danger", "stop stop", "red alarm", "abort", "emergency"]
+    urgent_contexts = ["badly", "critical", "box now", "immediately", "terminal", "failure", "danger", "stop stop", "red alarm", "abort", "emergency", "flat"]
 
     normal_subjects = ["Gap", "Pace", "Wind", "Weather", "Tire temp", "Fuel", "Strategy", "Radio", "Telemetry", "Sector 1", "Balance"]
     normal_verbs = ["is", "looks", "seems", "stays", "remains", "feeling", "holding", "reporting", "reading", "confirmed", "checking"]
@@ -158,7 +163,8 @@ def train_production_model():
     """Trains and caches the Deep Learning model."""
     tf, Tokenizer, pad_sequences, np = get_tf_modules()
     
-    X_text, y_labels = generate_f1_data(600)
+    # Increased dataset size as requested (2400)
+    X_text, y_labels = generate_f1_data(2400)
     X_text = list(X_text)
     y_labels = np.array(list(y_labels))
     
@@ -247,10 +253,19 @@ try:
         if "entity_ruler" not in nlp.pipe_names:
             ruler = nlp.add_pipe("entity_ruler", before="ner")
             patterns = [
-                {"label": "COMPONENT", "pattern": "Engine"}, {"label": "COMPONENT", "pattern": "Tires"},
-                {"label": "COMPONENT", "pattern": "Brakes"}, {"label": "COMPONENT", "pattern": "Gearbox"},
-                {"label": "STRATEGY", "pattern": "Box"}, {"label": "STRATEGY", "pattern": "Pit"},
-                {"label": "STATUS", "pattern": "Critical"}, {"label": "STATUS", "pattern": "Failing"}
+                {"label": "COMPONENT", "pattern": [{"LOWER": "engine"}]},
+                {"label": "COMPONENT", "pattern": [{"LOWER": "tires"}]},
+                {"label": "COMPONENT", "pattern": [{"LOWER": "brakes"}]},
+                {"label": "COMPONENT", "pattern": [{"LOWER": "gearbox"}]},
+                {"label": "COMPONENT", "pattern": [{"LOWER": "clutch"}]},
+                {"label": "COMPONENT", "pattern": [{"LOWER": "wing"}]},
+                {"label": "STRATEGY", "pattern": [{"LOWER": "box"}]},
+                {"label": "STRATEGY", "pattern": [{"LOWER": "pit"}]},
+                {"label": "STATUS", "pattern": [{"LOWER": "critical"}]},
+                {"label": "STATUS", "pattern": [{"LOWER": "failing"}]},
+                {"label": "DRIVER", "pattern": [{"LOWER": "hamilton"}]},
+                {"label": "DRIVER", "pattern": [{"LOWER": "verstappen"}]},
+                {"label": "DRIVER", "pattern": [{"LOWER": "leclerc"}]}
             ]
             ruler.add_patterns(patterns)
             
