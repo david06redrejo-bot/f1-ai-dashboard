@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Day 2: NER & Language Model Visualization</title>
+</head>
+<body style="padding: 20px;">
+    <h1>Day 2 Project Visualization</h1>
+    
+    <div style="margin-bottom: 50px;">
+        <h2>Named Entity Recognition (NER)</h2>
+        <p>Recognizing F1-specific entities (Drivers, Compounds, Actions).</p>
+        <div class="entities" style="line-height: 2.5; direction: ltr">
+<mark class="entity" style="background: #ddd; padding: 0.45em 0.6em; margin: 0 0.25em; line-height: 1; border-radius: 0.35em;">
+    Hamilton
+    <span style="font-size: 0.8em; font-weight: bold; line-height: 1; border-radius: 0.35em; vertical-align: middle; margin-left: 0.5rem">DRIVER</span>
+</mark>
+ needs to 
+<mark class="entity" style="background: #ddd; padding: 0.45em 0.6em; margin: 0 0.25em; line-height: 1; border-radius: 0.35em;">
+    Box
+    <span style="font-size: 0.8em; font-weight: bold; line-height: 1; border-radius: 0.35em; vertical-align: middle; margin-left: 0.5rem">ACTION</span>
+</mark>
+ for 
+<mark class="entity" style="background: #ddd; padding: 0.45em 0.6em; margin: 0 0.25em; line-height: 1; border-radius: 0.35em;">
+    Softs
+    <span style="font-size: 0.8em; font-weight: bold; line-height: 1; border-radius: 0.35em; vertical-align: middle; margin-left: 0.5rem">COMPOUND</span>
+</mark>
+</div>
+    </div>
+
+    
+<div style="font-family: Arial, sans-serif; margin-top: 50px;">
+    <h2>Bigram Language Model Frequencies</h2>
+    <p>This table shows how often a word follows another word in our training corpus.</p>
+    <table border="1" style="border-collapse: collapse; width: 50%;">
+        <tr style="background-color: #f2f2f2;">
+            <th style="padding: 8px;">Previous Word</th>
+            <th style="padding: 8px;">Next Word</th>
+            <th style="padding: 8px;">Count</th>
+        </tr>
+
+        <tr>
+            <td style="padding: 8px;">box</td>
+            <td style="padding: 8px;">box</td>
+            <td style="padding: 8px;">1</td>
+        </tr>
+        
+        <tr>
+            <td style="padding: 8px;">box</td>
+            <td style="padding: 8px;">for</td>
+            <td style="padding: 8px;">2</td>
+        </tr>
+        
+        <tr>
+            <td style="padding: 8px;">box</td>
+            <td style="padding: 8px;">now</td>
+            <td style="padding: 8px;">1</td>
+        </tr>
+        
+        <tr>
+            <td style="padding: 8px;">for</td>
+            <td style="padding: 8px;">softs</td>
+            <td style="padding: 8px;">1</td>
+        </tr>
+        
+        <tr>
+            <td style="padding: 8px;">for</td>
+            <td style="padding: 8px;">hards</td>
+            <td style="padding: 8px;">1</td>
+        </tr>
+        
+        <tr>
+            <td style="padding: 8px;">for</td>
+            <td style="padding: 8px;">new</td>
+            <td style="padding: 8px;">1</td>
+        </tr>
+        
+        <tr>
+            <td style="padding: 8px;">now</td>
+            <td style="padding: 8px;">for</td>
+            <td style="padding: 8px;">1</td>
+        </tr>
+        
+        <tr>
+            <td style="padding: 8px;">new</td>
+            <td style="padding: 8px;">tires</td>
+            <td style="padding: 8px;">1</td>
+        </tr>
+        
+        <tr>
+            <td style="padding: 8px;">hamilton</td>
+            <td style="padding: 8px;">is</td>
+            <td style="padding: 8px;">1</td>
+        </tr>
+        
+        <tr>
+            <td style="padding: 8px;">is</td>
+            <td style="padding: 8px;">pitting</td>
+            <td style="padding: 8px;">1</td>
+        </tr>
+        
+        <tr>
+            <td style="padding: 8px;">is</td>
+            <td style="padding: 8px;">faster</td>
+            <td style="padding: 8px;">1</td>
+        </tr>
+        
+        <tr>
+            <td style="padding: 8px;">pitting</td>
+            <td style="padding: 8px;">now</td>
+            <td style="padding: 8px;">1</td>
+        </tr>
+        
+        <tr>
+            <td style="padding: 8px;">verstappen</td>
+            <td style="padding: 8px;">is</td>
+            <td style="padding: 8px;">1</td>
+        </tr>
+        
+        <tr>
+            <td style="padding: 8px;">faster</td>
+            <td style="padding: 8px;">than</td>
+            <td style="padding: 8px;">1</td>
+        </tr>
+        
+        <tr>
+            <td style="padding: 8px;">than</td>
+            <td style="padding: 8px;">hamilton</td>
+            <td style="padding: 8px;">1</td>
+        </tr>
+        
+    </table>
+</div>
+
+</body>
+</html>
