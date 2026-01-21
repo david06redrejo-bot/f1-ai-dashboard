@@ -10,13 +10,12 @@ This repository documents a complete journey from basic NLP concepts to a Produc
 
 ---
 
-## 🚀 production Features (v2.0)
-- **Synthetic Data Engine**: Generates 600+ unique training examples on the fly.
-- **Deep Learning Core**: 3-Layer Neural Network (32-dim Embeddings) with validation monitoring.
-- **Mission Control UI**: 
-    - Full **F1 Telemetry Aesthetic** (Dark Mode, Orbitron Fonts, Neon Accents).
-    - Real-time "Threat Probability" visualization.
-    - Simulated "System Boot" training sequence.
+## 🚀 Upgrade to v2.1 (Technical Audit)
+Following a comprehensive technical audit, the system has been upgraded to **Production Grade**:
+- **Fixed Model Convergence**: Now trains on **600+ synthetic data points** (up from 10) to ensure high accuracy.
+- **Robustness**: Auto-detects and installs NLP models (`en_core_web_md`) on cloud environments.
+- **Efficiency**: Implemented smart caching (`@st.cache_resource`) for the Neural Network training pipeline.
+- **UI/UX**: Deep "Cyber-Industrial" aesthetic with real-time threat visualization.
 
 ---
 
@@ -41,14 +40,14 @@ This repository documents a complete journey from basic NLP concepts to a Produc
     ```bash
     streamlit run app.py
     ```
-    *Note: First run will download the 40MB spaCy model automatically.*
+    *Note: First run will download the key AI models automatically.*
 
 ---
 
 ## 📚 Technical Stack
-- **Frontend**: Streamlit (with custom CSS injection).
+- **Frontend**: Streamlit (Custom CSS, Orbital Fonts).
 - **NLP**: spaCy (en_core_web_md).
-- **ML**: TensorFlow/Keras (Sequential Model).
+- **ML**: TensorFlow/Keras (3-Layer Sequential Network).
 - **Ops**: Synthetic Data Generation for robust training.
 
 **"Box, Box. We are ready for deployment."** 🏁
