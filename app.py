@@ -118,9 +118,18 @@ st.markdown("""
 # --- HEADER ---
 c1, c2 = st.columns([1, 6])
 with c1:
-    st.markdown("<h1>🏎️</h1>", unsafe_allow_html=True)
+    st.image("https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/F1.svg/1200px-F1.svg.png", width=80)
 with c2:
-    st.markdown("<h1>F1 RACE ENGINEER AI <span style='font-size: 0.5em; color: #ff2800;'>PRO v2.1</span></h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='padding-top: 10px;'>F1 RACE ENGINEER AI <span style='font-size: 0.5em; color: #ff2800;'>PRO v2.1</span></h1>", unsafe_allow_html=True)
+
+st.divider()
+
+# --- TELEMETRY DECK (RESTORED) ---
+cols = st.columns(4)
+cols[0].metric("TRACK TEMP", "32.4°C", "1.2°C")
+cols[1].metric("WIND SPEED", "4.2 km/h", "-0.5")
+cols[2].metric("HUMIDITY", "45%", "Stable")
+cols[3].metric("AI CONFIDENCE", "99.1%", "+0.4%")
 
 st.divider()
 
@@ -132,12 +141,7 @@ with st.sidebar:
         ["Syntax Analysis", "Entity Recognition", "Vector Embeddings", "Urgency Classifier (DL)"]
     )
     st.markdown("---")
-    
-    # Telemetry Sidebar
-    st.caption("TELEMETRY STREAM")
-    st.metric("CPU LOAD", "12%", "-2%")
-    st.metric("MEMORY", "4.2 GB", "Stable")
-    st.metric("LATENCY", "45ms", "+3ms")
+    st.caption("SYSTEM STATUS: ONLINE")
 
 # --- SPACY LOADER ---
 @st.cache_resource
@@ -149,7 +153,8 @@ def load_nlp_model():
         download("en_core_web_md")
         return spacy.load("en_core_web_md")
 
-nlp = load_nlp_model()
+with st.spinner("INITIALIZING AI SUBSYSTEMS..."):
+    nlp = load_nlp_model()
 
 # --- SYNTHETIC DATA GENERATOR ---
 def generate_f1_data(num_samples=600):
